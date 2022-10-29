@@ -1,0 +1,15 @@
+.wrapper {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  width: 450px;
+  height: 450px;
+}
+
+.content {
+  margin-right: 150px;
+  justify-content: center;
+}
