@@ -2,6 +2,7 @@ function Navbar(props: any) {
   const links = [
     { title: "Home", url: "#" },
     { title: "Features", url: "#" },
+    { title: "How it Works", url: "#" },
     { title: "About", url: "#" },
     { title: "Contact", url: "#" },
   ];
@@ -10,14 +11,14 @@ function Navbar(props: any) {
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         {/* TODO: Fix name and logo */}
-        <a href="https://flowbite.com/" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
             className="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />
           <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-            Flowbite
+            Guidr
           </span>
         </a>
         <button
