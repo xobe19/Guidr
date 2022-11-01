@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Navbar from "../components/Navbar";
-import MainPagex from "../components/MainPage";
+import MainPage from "../components/MainPage";
 
 export default function Home() {
   return (
@@ -10,8 +10,7 @@ export default function Home() {
         <title>App | Lorem ipsum dolor sit amet.</title>
       </Head>
       <Navbar active="Home" />
-      <MainPagex />
-  
+      <MainPage />
     </div>
   );
 }

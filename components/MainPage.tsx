@@ -1,54 +1,51 @@
-import styles from "./../styles/Main.module.css";
+import Image from "next/image";
 
 const MainPage = () => {
   return (
-    <>
-      <div className={styles.wrapper}>
-        <div className={styles.content}>
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+    <div className="m-4 md:m-8 lg:m-24">
+      <div className="flex justify-between mb-20 xl:mx-16">
+        <div className="xl:flex-1">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 md:text-6xl">
             <span className="block xl:inline">Guidr</span>{" "}
           </h1>
-          <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-            One Stop for Guided path,learning resources,projects,research and
-            development,latest trends &#128640;
+          <p className="mt-3 text-base text-gray-500 md:mt-5 md:text-xl lg:mx-0">
+            One stop for Guided path, learning resources, projects, research and
+            development and latest trends &#128640;
           </p>
-          <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <div className="rounded-md shadow">
-              <a
-                href="#"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
-              >
-                Get started
-              </a>
-            </div>
+          <div className="mt-5">
+            <a
+              href="#"
+              className="inline-block bg-indigo-600 border border-indigo-500 focus:outline-none focus:shadow-outline hover:bg-indigo-700 px-4 py-2 lg:px-6 lg:py-4 lg:text-xl rounded-md select-none text-white font-medium"
+            >
+              Get started ➜
+            </a>
           </div>
         </div>
-
-        <div className={styles.img}>
-          <img src="mainimg.png" id="main-img" />
+        <div className="flex flex-col justify-center">
+          <Image src="/mainimg.png" alt="" width={450} height={450} />
         </div>
       </div>
 
-      <div className="bg-white py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="lg:text-center">
-            <h2 className="text-lg font-semibold text-indigo-600">
-              Fast-simple-accurate
+      <div className="bg-white mb-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="lg:text-center mb-8">
+            <h2 className="text-lg font-semibold text-indigo-600 mb-2">
+              Fast. Simple. Accurate
             </h2>
-            <p className="mt-2 text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
-              A better way to choose Carrer
+            <p className="text-3xl font-bold leading-8 tracking-tight text-gray-900 mb-4">
+              The best way to choose your Career
             </p>
-            <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+            <p className="max-w-2xl text-gray-500 lg:mx-auto">
               Recommedation System based on Learning patterns
             </p>
           </div>
 
-          <div className="mt-10">
-            <dl className="space-y-10 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10 md:space-y-0">
+          <div className="">
+            <dl className="space-y-8 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10 md:space-y-0">
               <div className="relative">
                 <dt>
                   <div className="absolute flex h-12 w-12 items-center justify-center rounded-md bg-indigo-500 text-white">
-                    {/*SVG ICONS NEED TO CHANGE*/}
+                    {/* TODO: SVG ICONS NEED TO CHANGE*/}
                     <svg
                       className="h-6 w-6"
                       xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +67,7 @@ const MainPage = () => {
                   </p>
                 </dt>
                 <dd className="mt-2 ml-16 text-base text-gray-500">
-                  Guidr Recommed of Job description which suits your interest
+                  Guidr recommends job descriptions which suits your interest
                 </dd>
               </div>
 
@@ -99,7 +96,7 @@ const MainPage = () => {
                 </dt>
                 <dd className="mt-2 ml-16 text-base text-gray-500">
                   Most Rated and Reputed Courses from Udemy, Coursera and
-                  codeacedmy
+                  Codeacademy
                 </dd>
               </div>
 
@@ -162,7 +159,7 @@ const MainPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
