@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import JobCard from "../components/JobCard";
-const Recommedations = () => {
+const recommedations = () => {
   return (
     <>
       <Navbar />
@@ -28,4 +28,4 @@ const Recommedations = () => {
   );
 };
 
-export default Recommedations;
+export default recommedations;
