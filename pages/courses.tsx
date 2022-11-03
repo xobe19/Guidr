@@ -1,16 +1,27 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+import CourseCard from "../components/CourseCard";
 
 const courses = () => {
-  const [jobName, setJobName] = useState("Machine Learning");
-  const [jobData, setJobData] = useState([]);
+
+  const [jobName, setJobName] = useState("web development");
+  const [UdemyData, setUdemyData] = useState([]);
+
+  const [CourseraData, setCourseraData] = useState([]);
+  const [codecademyData, setcodecademyData] = useState([]);
 
   const fetchdata = async () => {
-    const response = await fetch(
-      `/api/getUdemyCoursesData?jobName=${jobName}&limit=5`
-    );
-    const req = await response.json();
-    setJobData(req);
+    await fetch(`/api/getUdemyCoursesData?jobName=${jobName}&limit=1`)
+      .then((response) => response.json())
+      .then((data) => setUdemyData(data));
+
+    await fetch(`/api/getCourseraCoursesData?jobName=${jobName}&limit=1`)
+      .then((response) => response.json())
+      .then((data) => setCourseraData(data));
+
+    await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=1`)
+      .then((response) => response.json())
+      .then((data) => setcodecademyData(data));
   };
 
   useEffect(() => {
@@ -20,22 +31,20 @@ const courses = () => {
     <>
       <Navbar />
 
-      {/* {TODO: Need to make JobCard component} */}
-      {jobData.map((jobData) => {
-        return (
-          <ul>
-            <li key="{jobData._id}">
-              <h1>
-                <b>{jobData.Title}</b>
-              </h1>
-              <p>Description : {jobData.Summary}</p>
-              <h3>
-                Purchased :{jobData.Rating} Rating : {jobData.Stars}
-              </h3>
-            </li>
-          </ul>
-        );
-      })}
+      {/* {Need to Styles and filter rating course to first} */}
+      <section>
+        {UdemyData.map((UdemyData) => {
+          return (
+            <CourseCard
+              Name={UdemyData.Title}
+              Description={UdemyData.Summary}
+              Link={UdemyData.Link}
+              Rating={UdemyData.Rating}
+              Stars={UdemyData.Stars}
+            />
+          );
+        })}
+      </section>
     </>
   );
 };
