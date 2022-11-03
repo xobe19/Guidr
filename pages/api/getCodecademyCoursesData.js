@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import clientPromise from "../../lib/mongo_connection";
-export default async function getUdemyCoursesData(
+export default async function getCodeacademyCoursesData(
   { query: { jobName, limit } },
   res
 ) {

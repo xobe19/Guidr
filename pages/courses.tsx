@@ -3,15 +3,14 @@ import Navbar from "../components/Navbar";
 import CourseCard from "../components/CourseCard";
 
 const courses = () => {
-
-  const [jobName, setJobName] = useState("web development");
+  const [jobName, setJobName] = useState("blockchain");
   const [UdemyData, setUdemyData] = useState([]);
 
   const [CourseraData, setCourseraData] = useState([]);
   const [codecademyData, setcodecademyData] = useState([]);
 
   const fetchdata = async () => {
-    await fetch(`/api/getUdemyCoursesData?jobName=${jobName}&limit=1`)
+    await fetch(`/api/getUdemyCoursesData?jobName=${jobName}&limit=5`)
       .then((response) => response.json())
       .then((data) => setUdemyData(data));
 
