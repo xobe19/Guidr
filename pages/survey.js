@@ -308,13 +308,15 @@ const survey = () => {
                     }`
                   );
                   recommendedJobs = await recommendedJobs.json();
-                  recommendedJobs["recommendations"][0];
+                  recommendedJobs = recommendedJobs["recommendations"][0];
+                  console.log(recommendedJobs);
                   let finString = "";
                   for (let key in recommendedJobs) {
+                    console.log(recommendedJobs[key]);
                     finString += recommendedJobs[key] + ",";
                   }
                   finString += ",";
-                  router.push("/recommedations", {});
+                  router.push(`/Recommedations?job=${finString}`);
                   // console.log(
                   //   ugOptions,
                   //   skillsOptions,

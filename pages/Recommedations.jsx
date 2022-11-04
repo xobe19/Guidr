@@ -1,13 +1,27 @@
 import Navbar from "../components/Navbar";
 import JobCard from "../components/JobCard";
-import { useRouter } from "next/router";
-const recommedations = () => {
-  const router = useRouter();
-  const { job } = router.query;
-  const arrJobs = [];
+import { useRouter  } from "next/router";
+import { useEffect, useState } from "react";
 
+const recommedations = () => {
+// console.log(router.query);
+// let { job } = router.query;
+// let arrJobs = job.split(',');
+// arrJobs = arrJobs.filter((ele) => ele!=''); 
+
+const router = useRouter()
+let [params, setParams] = useState({});
+//arrJobs.map((ele) => {
+  //   return <JobCard title={ele}/>
+  
+useEffect(() => {
+    setParams(router.query);
+    console.log(params)
+}, [router.query]);
   return (
-    <>
+
+    (params == undefined || params == null ||  Object.keys(params).length === 0) ? (<></> ): 
+    (<>
       <Navbar />
 
       <section className="bg-white ">
@@ -22,11 +36,18 @@ const recommedations = () => {
           </div>
 
           <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-            {/* <JobCard name/> */}
+         { 
+
+ params['job'].split(',').map((ele) => {
+   return <JobCard title={ele}/>
+})
+
+            }
           </div>
         </div>
       </section>
     </>
+    ) 
   );
 };
 

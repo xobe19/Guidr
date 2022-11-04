@@ -1,41 +1,47 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../../components/Navbar";
-import CourseCard from "../../components/CourseCard";
-import CourseraCard from "../../components/CourseraCard";
-import CodeacademyCard from "../../components/CodeacademyCard";
-import Bargraph from "../../components/Bargraph";
+import Navbar from "../components/Navbar";
+import CourseCard from "../components/CourseCard";
+import CourseraCard from "../components/CourseraCard";
+import CodeacademyCard from "../components/CodeacademyCard";
+import Bargraph from "../components/Bargraph";
 import { useRouter } from "next/router";
 const courses = () => {
   const router = useRouter();
-  const { job } = router.query;
+  let [params,setParams] = useState({});
 
-  const [jobName, setJobName] = useState({ job });
+  const  job  = params['job'];
+
+  const [jobName, setJobName] = useState( job );
+  console.log(jobName);
   const [UdemyData, setUdemyData] = useState([]);
 
   const [CourseraData, setCourseraData] = useState([]);
   const [codecademyData, setcodecademyData] = useState([]);
 
   const fetchdata = async () => {
-    await fetch(`/api/getUdemyCoursesData?jobName=${jobName}&limit=3`)
+    await fetch(`/api/getUdemyCoursesData?jobName=${params['job']}&limit=3`)
       .then((response) => response.json())
       .then((data) => setUdemyData(data));
 
-    // await fetch(`/api/getCourseraCoursesData?jobName=${jobName}&limit=3`)
-    //   .then((response) => response.json())
-    //   .then((data) => setCourseraData(data));
+    await fetch(`/api/getCourseraCoursesData?jobName=${params['job']}&limit=3`)
+      .then((response) => response.json())
+      .then((data) => setCourseraData(data));
 
-    // await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=3`)
-    //   .then((response) => response.json())
-    //   .then((data) => setcodecademyData(data));
+    await fetch(`/api/getCodecademyCoursesData?jobName=${params['job']}&limit=3`)
+      .then((response) => response.json())
+      .then((data) => setcodecademyData(data));
 
     // await fetch(`/api/getExtraDataforJob?jobName?jobName=${jobName}&limit=0`)
     //   .then((response) => response.json())
     //   .then((data) => setcodecademyData(data));
   };
 
-  useEffect(() => {
+useEffect(() => {
+    setParams(router.query);
+  if(params != null && params != undefined && Object.keys(params).length != 0) 
     fetchdata();
-  }, [jobName]);
+    console.log(params)
+}, [router.query, params]);
   return (
     <div>
       <Navbar />
@@ -52,15 +58,17 @@ const courses = () => {
               coursesLink={UdemyData.Link}
               Rating={UdemyData.Rating}
               Stars={UdemyData.Stars}
+              key={UdemyData.Title}
             />
           );
         })}
-        {/* {CourseraData.map((CourseraData) => {
+        {CourseraData.map((CourseraData) => {
           return (
             <CourseraCard
               name={CourseraData.course_name}
               link={CourseraData.course_link}
               rating={CourseraData.course_rating}
+              key={CourseraData.course_name}
             />
           );
         })}
@@ -69,9 +77,10 @@ const courses = () => {
             <CodeacademyCard
               name={codecademyData.title}
               cat={codecademyData.category}
+              key={codecademyData.title}
             />
           );
-        })} */}
+        })}
       </div>
     </div>
   );
