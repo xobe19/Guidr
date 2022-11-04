@@ -3,9 +3,9 @@ import React from "react";
 const CourseCard = (props) => {
   return (
     <div>
-      <div className="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div className="p-6 max-w-sm rounded-lg border shadow-md bg-gray-800 border-gray-700">
         <svg
-          className="mb-2 w-10 h-10 text-gray-500 dark:text-gray-400"
+          className="mb-2 w-10 h-10 text-gray-400"
           aria-hidden="true"
           fill="currentColor"
           viewBox="0 0 20 20"
@@ -19,13 +19,11 @@ const CourseCard = (props) => {
           <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path>
         </svg>
         <a href="#">
-          <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-2xl font-semibold tracking-tight text-white">
             {props.Name}
           </h5>
         </a>
-        <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
-          {props.Description}
-        </p>
+        <p className="mb-3 font-normal text-gray-400">{props.Description}</p>
         <a
           href={props.coursesLink}
           className="inline-flex items-center text-blue-600 hover:underline"

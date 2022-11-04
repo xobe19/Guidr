@@ -5,7 +5,7 @@ const ActivityGraph = () => {
     const boxes = [];
     for (var i = 1; i < 365; i++) {
       const level = Math.floor(Math.random() * 3);
-      boxes.push(<li data-level={level}></li>);
+      boxes.push(<li key={i} data-level={level}></li>);
     }
     return boxes;
   }
