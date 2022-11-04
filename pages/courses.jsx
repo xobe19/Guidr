@@ -13,15 +13,15 @@ const courses = () => {
   const [codecademyData, setcodecademyData] = useState([]);
 
   const fetchdata = async () => {
-    await fetch(`/api/getUdemyCoursesData?jobName=${jobName}&limit=1`)
+    await fetch(`/api/getUdemyCoursesData?jobName=${jobName}&limit=3`)
       .then((response) => response.json())
       .then((data) => setUdemyData(data));
 
-    await fetch(`/api/getCourseraCoursesData?jobName=${jobName}&limit=1`)
+    await fetch(`/api/getCourseraCoursesData?jobName=${jobName}&limit=3`)
       .then((response) => response.json())
       .then((data) => setCourseraData(data));
 
-    await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=1`)
+    await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=3`)
       .then((response) => response.json())
       .then((data) => setcodecademyData(data));
   };
@@ -37,11 +37,12 @@ const courses = () => {
 
       <div className="mx-auto w-fit">
         {UdemyData.map((UdemyData) => {
+          console.log(UdemyData.Link);
           return (
             <CourseCard
               Name={UdemyData.Title}
               Description={UdemyData.Summary}
-              Link={UdemyData.Link}
+              coursesLink={UdemyData.Link}
               Rating={UdemyData.Rating}
               Stars={UdemyData.Stars}
             />
