@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/MainPage.module.css";
-
+import { useSession, signIn, signOut } from "next-auth/react"
 /* Styles helper */
 function sh(s: String) {
   const a = [];
@@ -12,6 +12,8 @@ function sh(s: String) {
 }
 
 const MainPage = () => {
+let {data: session} = useSession();  
+console.log(session);
   return (
     <div className="m-4 md:m-8 lg:m-24">
       <div className="flex justify-between mb-20 xl:mx-16">

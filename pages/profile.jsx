@@ -1,7 +1,32 @@
 import Navbar from "../components/Navbar";
 import ActivityGraph from "../components/ActivityGraph";
-
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useEffect, useState } from "react";
 const profile = () => {
+const {data: session} = useSession();
+console.log(session);
+let name = session?.user?.name;
+let email = session?.user?.email;
+let imageUrl = session?.user?.image;
+console.log(email+'outer');
+let [data, setData] = useState([]);
+
+const fetchData = async (email) => {
+  console.log('test'+email);
+let tmp = await fetch('/api/getCourseHistory?email='+email);
+tmp = await tmp.json();
+setData(tmp['data']);
+}
+
+useEffect(() => {
+if(email != undefined)
+  fetchData(email);
+}, [email]);
+
+let enrolledCourses = data.length, completedCourses = 0;
+for(let i = 0; i < data.length; i++) {
+  if(data[i]['completed']) completedCourses++;
+}
   return (
     <div>
       <Navbar />
@@ -10,32 +35,18 @@ const profile = () => {
           <div className="grid grid-cols-1 md:grid-cols-3">
             <div className="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
               <div>
-                <p className="font-bold text-gray-700 text-xl">22</p>
+                <p className="font-bold text-gray-700 text-xl">{enrolledCourses}</p>
                 <p className="text-gray-400">Enrolled</p>
               </div>
               <div>
-                <p className="font-bold text-gray-700 text-xl">10</p>
+                <p className="font-bold text-gray-700 text-xl">{completedCourses}</p>
                 <p className="text-gray-400">Completed</p>
               </div>
-              <div>
-                <p className="font-bold text-gray-700 text-xl">5</p>
-                <p className="text-gray-400">Certificates</p>
-              </div>
+
             </div>
             <div className="relative">
               <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-24 w-24"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+     <img src={`${imageUrl}`}></img> 
               </div>
             </div>
             <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center items-center">
@@ -94,22 +105,12 @@ const profile = () => {
           </div>
           <div className="mt-20 text-center border-b pb-12">
             <h1 className="text-4xl font-medium text-gray-700">
-              Jessica Jones,{" "}
-              <span className="font-light text-gray-500">27</span>
+              {name}
             </h1>
-            <p className="font-light text-gray-600 mt-3">Bucharest, Romania</p>
-            <p className="mt-8 text-gray-500">
-              Solution Manager - Creative Tim Officer
-            </p>
-            <p className="mt-2 text-gray-500">University of Computer Science</p>
           </div>
           <div className="mt-12 flex flex-col justify-center border-b">
             <p className="mb-12 text-gray-600 text-center font-light lg:px-16">
-              An artist of considerable range, Ryan — the name taken by
-              Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-              and records all of his own music, giving it a warm, intimate feel
-              with a solid groove structure. An artist of considerable range.
-            </p>
+                        </p>
           </div>
           <div className="mt-12 flex flex-col justify-center border-b">
             <span className="block text-2xl font-medium text-gray-700">

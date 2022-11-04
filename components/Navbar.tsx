@@ -1,12 +1,13 @@
 import Link from "next/link";
-
+import { useSession, signIn, signOut } from "next-auth/react"
 function Navbar(props: any) {
+    const { data: session } = useSession()
+
   const links = [
     { title: "Home", url: "#" },
     { title: "Features", url: "#features" },
     { title: "How it Works", url: "#how-it-works" },
     { title: "About", url: "#" },
-    { title: "Contact", url: "#" },
   ];
 
   return (
@@ -67,6 +68,31 @@ function Navbar(props: any) {
                 )}
               </li>
             ))}
+ <li key={99}>
+                {!session ? (
+                  <a
+                    className="block py-2 pr-4 pl-3  bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-white"
+                    aria-current="page"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      signIn();
+                    }}
+                  >
+                    Login 
+                  </a>
+                ) : (
+                  <a
+                    className="block py-2 pr-4 pl-3  bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-white"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      signOut();
+                    }}
+                  >
+                    Logout
+                  </a>
+                )}
+              </li>
+
           </ul>
         </div>
       </div>
