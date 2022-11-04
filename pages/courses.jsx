@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+
 import CourseCard from "../components/CourseCard";
+import CourseraCard from "../components/CourseraCard";
+import CodeacademyCard from "../components/CodeacademyCard";
 
 const courses = () => {
-  const [jobName, setJobName] = useState("HR");
+  const [jobName, setJobName] = useState("web");
   const [UdemyData, setUdemyData] = useState([]);
 
   const [CourseraData, setCourseraData] = useState([]);
   const [codecademyData, setcodecademyData] = useState([]);
 
   const fetchdata = async () => {
-    await fetch(`/api/getUdemyCoursesData?jobName=${jobName}&limit=5`)
+    await fetch(`/api/getUdemyCoursesData?jobName=${jobName}&limit=1`)
       .then((response) => response.json())
       .then((data) => setUdemyData(data));
 
-    // await fetch(`/api/getCourseraCoursesData?jobName=${jobName}&limit=1`)
-    //   .then((response) => response.json())
-    //   .then((data) => setCourseraData(data));
+    await fetch(`/api/getCourseraCoursesData?jobName=${jobName}&limit=1`)
+      .then((response) => response.json())
+      .then((data) => setCourseraData(data));
 
-    // await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=1`)
-    //   .then((response) => response.json())
-    //   .then((data) => setcodecademyData(data));
+    await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=1`)
+      .then((response) => response.json())
+      .then((data) => setcodecademyData(data));
   };
 
   useEffect(() => {
@@ -31,7 +34,8 @@ const courses = () => {
       <Navbar />
 
       {/* {Need to Styles and filter rating course to first} */}
-      <section>
+
+      <div className="mx-auto w-fit">
         {UdemyData.map((UdemyData) => {
           return (
             <CourseCard
@@ -43,7 +47,24 @@ const courses = () => {
             />
           );
         })}
-      </section>
+        {CourseraData.map((CourseraData) => {
+          return (
+            <CourseraCard
+              name={CourseraData.course_name}
+              link={CourseraData.course_link}
+              rating={CourseraData.course_rating}
+            />
+          );
+        })}
+        {codecademyData.map((codecademyData) => {
+          return (
+            <CodeacademyCard
+              name={codecademyData.title}
+              cat={codecademyData.category}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };
