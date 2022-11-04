@@ -1,32 +1,33 @@
 import Navbar from "../components/Navbar";
 import ActivityGraph from "../components/ActivityGraph";
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
+import CourseTable from "../components/CourseTable";
 const profile = () => {
-const {data: session} = useSession();
-console.log(session);
-let name = session?.user?.name;
-let email = session?.user?.email;
-let imageUrl = session?.user?.image;
-console.log(email+'outer');
-let [data, setData] = useState([]);
+  const { data: session } = useSession();
+  console.log(session);
+  let name = session?.user?.name;
+  let email = session?.user?.email;
+  let imageUrl = session?.user?.image;
+  console.log(email + "outer");
+  let [data, setData] = useState([]);
 
-const fetchData = async (email) => {
-  console.log('test'+email);
-let tmp = await fetch('/api/getCourseHistory?email='+email);
-tmp = await tmp.json();
-setData(tmp['data']);
-}
+  const fetchData = async (email) => {
+    console.log("test" + email);
+    let tmp = await fetch("/api/getCourseHistory?email=" + email);
+    tmp = await tmp.json();
+    setData(tmp["data"]);
+  };
 
-useEffect(() => {
-if(email != undefined)
-  fetchData(email);
-}, [email]);
+  useEffect(() => {
+    if (email != undefined) fetchData(email);
+  }, [email]);
 
-let enrolledCourses = data.length, completedCourses = 0;
-for(let i = 0; i < data.length; i++) {
-  if(data[i]['completed']) completedCourses++;
-}
+  let enrolledCourses = data.length,
+    completedCourses = 0;
+  for (let i = 0; i < data.length; i++) {
+    if (data[i]["completed"]) completedCourses++;
+  }
   return (
     <div>
       <Navbar />
@@ -35,18 +36,21 @@ for(let i = 0; i < data.length; i++) {
           <div className="grid grid-cols-1 md:grid-cols-3">
             <div className="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
               <div>
-                <p className="font-bold text-gray-700 text-xl">{enrolledCourses}</p>
+                <p className="font-bold text-gray-700 text-xl">
+                  {enrolledCourses}
+                </p>
                 <p className="text-gray-400">Enrolled</p>
               </div>
               <div>
-                <p className="font-bold text-gray-700 text-xl">{completedCourses}</p>
+                <p className="font-bold text-gray-700 text-xl">
+                  {completedCourses}
+                </p>
                 <p className="text-gray-400">Completed</p>
               </div>
-
             </div>
             <div className="relative">
               <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
-     <img src={`${imageUrl}`}></img> 
+                <img src={`${imageUrl}`}></img>
               </div>
             </div>
             <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center items-center">
@@ -104,19 +108,23 @@ for(let i = 0; i < data.length; i++) {
             </div>
           </div>
           <div className="mt-20 text-center border-b pb-12">
-            <h1 className="text-4xl font-medium text-gray-700">
-              {name}
-            </h1>
+            <h1 className="text-4xl font-medium text-gray-700">{name}</h1>
           </div>
           <div className="mt-12 flex flex-col justify-center border-b">
-            <p className="mb-12 text-gray-600 text-center font-light lg:px-16">
-                        </p>
+            <p className="mb-12 text-gray-600 text-center font-light lg:px-16"></p>
           </div>
           <div className="mt-12 flex flex-col justify-center border-b">
             <span className="block text-2xl font-medium text-gray-700">
               Activity Graph
             </span>
             <ActivityGraph />
+          </div>
+
+          <div className="mt-12 flex flex-col justify-center border-b">
+            <span className="block text-2xl font-medium text-gray-700">
+              Course History
+            </span>
+            <CourseTable email={email} data={data} />
           </div>
         </div>
       </div>
