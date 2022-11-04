@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import CourseCard from "../components/CourseCard";
 
 const courses = () => {
-  const [jobName, setJobName] = useState("blockchain");
+  const [jobName, setJobName] = useState("HR");
   const [UdemyData, setUdemyData] = useState([]);
 
   const [CourseraData, setCourseraData] = useState([]);
@@ -14,13 +14,13 @@ const courses = () => {
       .then((response) => response.json())
       .then((data) => setUdemyData(data));
 
-    await fetch(`/api/getCourseraCoursesData?jobName=${jobName}&limit=1`)
-      .then((response) => response.json())
-      .then((data) => setCourseraData(data));
+    // await fetch(`/api/getCourseraCoursesData?jobName=${jobName}&limit=1`)
+    //   .then((response) => response.json())
+    //   .then((data) => setCourseraData(data));
 
-    await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=1`)
-      .then((response) => response.json())
-      .then((data) => setcodecademyData(data));
+    // await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=1`)
+    //   .then((response) => response.json())
+    //   .then((data) => setcodecademyData(data));
   };
 
   useEffect(() => {
