@@ -1,17 +1,8 @@
 import React, { useState } from "react";
 
-const Pills = ({ itemLst, selectedPill = () => {} }) => {
-  let [itemList, setItemList] = useState(itemLst);
-console.log(itemLst);
+const Pills = ({ itemList, selectedPill = () => {} , multiSelect}) => {
   const handleClick = (item) => {
-    let clonedArray = JSON.parse(JSON.stringify(itemList));
-    for(let i = 0; i < clonedArray.length; i++) {
-      if(clonedArray[i]['id'] == item['id']) {
-        clonedArray[i].selected = !clonedArray[i].selected;
-      }
-    }
-    setItemList(clonedArray);
-    selectedPill(item);
+      selectedPill(item);
   };
   if (!itemList) {
     console.error("Missing itemList. Hence there is nothing to display");
