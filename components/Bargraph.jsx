@@ -42,7 +42,7 @@ export default function BarGraph(props) {
       },
       title: {
         display: true,
-        text: "Chart.js Bar Chart",
+        text: "",
       },
     },
   };
@@ -52,25 +52,31 @@ export default function BarGraph(props) {
       {
         label: "State vs Available jobs",
         data: numArray,
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
   };
   let rupeeIndian = Intl.NumberFormat("en-IN", {
     style: "currency",
-    currency: "INR"
+    currency: "INR",
   });
 
   return (
     <>
       <h1 className="text-5xl font-extrabold dark:text-black">
-        Average Salary is :{" "}
+        Average Salary of :{" "}
         <span class="text-blue-600 dark:text-blue-500">
           {rupeeIndian.format(Math.trunc(props.avgsalary))} Lakhs
         </span>
       </h1>
 
-      <Bar options={options} data={data} />
+      <Bar
+        // width={500}
+        // height={500}
+        // className="ml-100"
+        options={options}
+        data={data}
+      />
     </>
   );
 }
