@@ -56,10 +56,21 @@ export default function BarGraph(props) {
       },
     ],
   };
+  let rupeeIndian = Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR"
+  });
+
   return (
-    <main>
-      <h1>{props.avgsalary}</h1>
+    <>
+      <h1 className="text-5xl font-extrabold dark:text-black">
+        Average Salary is :{" "}
+        <span class="text-blue-600 dark:text-blue-500">
+          {rupeeIndian.format(Math.trunc(props.avgsalary))} Lakhs
+        </span>
+      </h1>
+
       <Bar options={options} data={data} />
-    </main>
+    </>
   );
 }
