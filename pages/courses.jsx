@@ -57,7 +57,7 @@ const courses = () => {
       {/* {Need to Styles and filter rating course to first} */}
       {/* <Chart /> */}
       <Bargraph statesMap={salary.statesMap} avgsalary={salary.averageSalary} />
-      <div className="mx-auto w-fit flex flex-wrap justify-center items-center">
+      <div className="mx-auto w-fit flex flex-wrap justify-center items-center gap-4 my-16">
         {UdemyData.map((UdemyData) => {
           return (
             <CourseCard

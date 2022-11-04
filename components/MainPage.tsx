@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../styles/MainPage.module.css";
 
 /* Styles helper */
@@ -23,12 +24,12 @@ const MainPage = () => {
             development and latest trends &#128640;
           </p>
           <div className="mt-5">
-            <a
+            <Link
               href="/survey"
               className="inline-block bg-indigo-600 border border-indigo-500 focus:outline-none focus:shadow-outline hover:bg-indigo-700 px-4 py-2 lg:px-6 lg:py-4 lg:text-xl rounded-md select-none text-white font-medium"
             >
               Get started ➜
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex flex-col justify-center">
