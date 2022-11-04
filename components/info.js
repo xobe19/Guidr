@@ -1,0 +1,43 @@
+const info = {
+  averageSalary: 589845.999198718,
+  medianSalary: 330000,
+  statesMap: {
+    punjab: 26,
+    "madhya pradesh": 16,
+    "andhra pradesh": 3,
+    maharashtra: 127,
+    delhi: 165,
+    "uttar pradesh": 157,
+    "west bengal": 19,
+    haryana: 81,
+    telangana: 113,
+    karnataka: 226,
+    gujarat: 29,
+    kerala: 22,
+    remote: 28,
+    "tamil nadu": 54,
+    rajasthan: 10,
+    uttarakhand: 4,
+    chandigarh: 8,
+    bihar: 1,
+    puducherry: 3,
+    jharkhand: 4,
+    orissa: 2,
+    goa: 2,
+  },
+  result: [
+    {
+      _id: "6363f2ba2d30cefaf008ad93",
+      "Job Role": "web developer",
+      Company: "code optimal solution pvt",
+      Requirements:
+        "role responsibility web developer build design maintains website software application design writes edits website content understands ui cross browser compatibility general web function standard creates solution identified problem bug executes assignment use web application script programming language html cs javascript apis develops validates test routine ensure quality external internal interface design assignment web service like rest soap etc evaluates written code ensure meet industry standard compatible device maintains professional understanding web development tracking trend participating study group qualification requirement web developer bachelor master degree computer related field solid knowledge experience programming application proficient javascript html cs node j react j proficient framework laravel codeigniter etc dedicated team player ability thrive fast paced environment solid ability written verbal communication knowledge programming language technical terminology able develop idea process clearly express able solve complex problem experience 3 5 year work home yearly bonus paid timeoff job type full time salary 20 000 00 50 000 00 per month benefit flexible schedule paid sick time work home schedule day shift flexible shift supplemental pay overtime pay performance bonus yearly bonus education bachelor preferred experience web development 5 year preferred speak employer+91 xxxxxxxxxx",
+      State: "punjab",
+      City: "amritsar",
+      Salary: 420000,
+      "Work Location": "full-time",
+      Education: "bachelor",
+    },
+  ],
+};
+export default info;

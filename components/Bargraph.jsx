@@ -1,6 +1,6 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import faker from "faker";
+import info from "./../components/info";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { data } from "./Chart";
 
 ChartJS.register(
   CategoryScale,
@@ -20,32 +21,43 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Chart.js Bar Chart",
-    },
-  },
-};
+const labels = [];
+let count = 0;
+const numArray = [];
+for (const property in info.statesMap) {
+  labels.push(property);
+  const num = info.statesMap[property];
+  numArray.push(num);
+  count++;
+  if (count == 5) {
+    break;
+  }
+}
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
+console.log(labels);
+console.log(numArray);
+export default function BarGraph() {
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Chart.js Bar Chart",
+      },
     },
-  ],
-};
-
-export function BarGraph() {
+  };
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "State vs Available jobs",
+        data: numArray,
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  };
   return <Bar options={options} data={data} />;
 }

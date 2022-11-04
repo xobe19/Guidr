@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
-import CourseCard from "../components/CourseCard";
-import CourseraCard from "../components/CourseraCard";
-import CodeacademyCard from "../components/CodeacademyCard";
-
+import Navbar from "../../components/Navbar";
+import CourseCard from "../../components/CourseCard";
+import CourseraCard from "../../components/CourseraCard";
+import CodeacademyCard from "../../components/CodeacademyCard";
+import Bargraph from "../../components/Bargraph";
+import { useRouter } from "next/router";
 const courses = () => {
-  const [jobName, setJobName] = useState("web");
+  const router = useRouter();
+  const { job } = router.query;
+
+  const [jobName, setJobName] = useState({ job });
   const [UdemyData, setUdemyData] = useState([]);
 
   const [CourseraData, setCourseraData] = useState([]);
@@ -16,13 +20,13 @@ const courses = () => {
       .then((response) => response.json())
       .then((data) => setUdemyData(data));
 
-    await fetch(`/api/getCourseraCoursesData?jobName=${jobName}&limit=3`)
-      .then((response) => response.json())
-      .then((data) => setCourseraData(data));
+    // await fetch(`/api/getCourseraCoursesData?jobName=${jobName}&limit=3`)
+    //   .then((response) => response.json())
+    //   .then((data) => setCourseraData(data));
 
-    await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=3`)
-      .then((response) => response.json())
-      .then((data) => setcodecademyData(data));
+    // await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=3`)
+    //   .then((response) => response.json())
+    //   .then((data) => setcodecademyData(data));
 
     // await fetch(`/api/getExtraDataforJob?jobName?jobName=${jobName}&limit=0`)
     //   .then((response) => response.json())
@@ -33,12 +37,13 @@ const courses = () => {
     fetchdata();
   }, [jobName]);
   return (
-    <>
+    <div>
       <Navbar />
 
       {/* {Need to Styles and filter rating course to first} */}
-
-      <div className="mx-auto w-fit">
+      {/* <Chart /> */}
+      <Bargraph />
+      <div className="mx-auto w-fit flex flex-wrap justify-center items-center">
         {UdemyData.map((UdemyData) => {
           return (
             <CourseCard
@@ -50,7 +55,7 @@ const courses = () => {
             />
           );
         })}
-        {CourseraData.map((CourseraData) => {
+        {/* {CourseraData.map((CourseraData) => {
           return (
             <CourseraCard
               name={CourseraData.course_name}
@@ -66,9 +71,9 @@ const courses = () => {
               cat={codecademyData.category}
             />
           );
-        })}
+        })} */}
       </div>
-    </>
+    </div>
   );
 };
 
