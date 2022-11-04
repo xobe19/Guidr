@@ -1,6 +1,6 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import info from "./../components/info";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,7 +10,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { data } from "./Chart";
 
 ChartJS.register(
   CategoryScale,
@@ -21,22 +20,20 @@ ChartJS.register(
   Legend
 );
 
-const labels = [];
-let count = 0;
-const numArray = [];
-for (const property in info.statesMap) {
-  labels.push(property);
-  const num = info.statesMap[property];
-  numArray.push(num);
-  count++;
-  if (count == 5) {
-    break;
+export default function BarGraph(props) {
+  const labels = [];
+  let count = 0;
+  const numArray = [];
+  for (const property in props.statesMap) {
+    labels.push(property);
+    const num = props.statesMap[property];
+    numArray.push(num);
+    count++;
+    if (count == 5) {
+      break;
+    }
   }
-}
 
-console.log(labels);
-console.log(numArray);
-export default function BarGraph() {
   const options = {
     responsive: true,
     plugins: {
@@ -59,5 +56,10 @@ export default function BarGraph() {
       },
     ],
   };
-  return <Bar options={options} data={data} />;
+  return (
+    <main>
+      <h1>{props.avgsalary}</h1>
+      <Bar options={options} data={data} />
+    </main>
+  );
 }
