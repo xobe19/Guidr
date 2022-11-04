@@ -1,4 +1,14 @@
 import Image from "next/image";
+import styles from "../styles/MainPage.module.css";
+
+/* Styles helper */
+function sh(s: String) {
+  const a = [];
+  for (let style of s.split(" ")) {
+    a.push(styles[style]);
+  }
+  return a.join(" ");
+}
 
 const MainPage = () => {
   return (
@@ -26,7 +36,7 @@ const MainPage = () => {
         </div>
       </div>
 
-      <div className="bg-white mb-8">
+      <div className="bg-white mb-20" id="features">
         <div className="mx-auto max-w-7xl">
           <div className="lg:text-center mb-8">
             <h2 className="text-lg font-semibold text-indigo-600 mb-2">
@@ -158,6 +168,57 @@ const MainPage = () => {
             </dl>
           </div>
         </div>
+      </div>
+
+      <div className="mb-20" id="how-it-works">
+        <p className="text-3xl font-bold lg:text-center leading-8 tracking-tight text-gray-900 mb-4">
+          How it Works
+        </p>
+        <ul
+          className={sh("stepper stepper-vertical")}
+          data-mdb-stepper="stepper"
+          data-mdb-stepper-type="vertical"
+        >
+          <li className={sh("stepper-step stepper-active")}>
+            <div className={sh("stepper-head")} tabIndex={0}>
+              <span className={sh("stepper-head-icon")}> 1 </span>
+              <span className={sh("stepper-head-text")}> Step 1 </span>
+            </div>
+            <div className={sh("stepper-content")} style={{ height: 64 }}>
+              An interactive survey to analyze your skills and learning
+              patterns.
+            </div>
+          </li>
+          <li className={sh("stepper-step stepper-active")}>
+            <div className={sh("stepper-head")}>
+              <span className={sh("stepper-head-icon")}> 2 </span>
+              <span className={sh("stepper-head-text")}> Step 2 </span>
+            </div>
+            <div className={sh("stepper-content")} style={{ height: 64 }}>
+              Intelligent interests inference based on your inputs.
+            </div>
+          </li>
+          <li className={sh("stepper-step stepper-active")}>
+            <div className={sh("stepper-head")}>
+              <span className={sh("stepper-head-icon")}> 3 </span>
+              <span className={sh("stepper-head-text")}> Step 3 </span>
+            </div>
+            <div className={sh("stepper-content")} style={{ height: 64 }}>
+              Recommendation via leaning patterns like Web-dev, AI, ML, etc.
+              with average salary.
+            </div>
+          </li>
+          <li className={sh("stepper-step stepper-active")}>
+            <div className={sh("stepper-head")}>
+              <span className={sh("stepper-head-icon")}> 4 </span>
+              <span className={sh("stepper-head-text")}> Step 4 </span>
+            </div>
+            <div className={sh("stepper-content")} style={{ height: 64 }}>
+              Roadmaps, courses, projects, docs and the best resources from
+              around the internet.
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   );

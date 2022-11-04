@@ -3,8 +3,8 @@ import Link from "next/link";
 function Navbar(props: any) {
   const links = [
     { title: "Home", url: "#" },
-    { title: "Features", url: "#" },
-    { title: "How it Works", url: "#" },
+    { title: "Features", url: "#features" },
+    { title: "How it Works", url: "#how-it-works" },
     { title: "About", url: "#" },
     { title: "Contact", url: "#" },
   ];
