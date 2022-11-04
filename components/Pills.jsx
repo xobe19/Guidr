@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Pills = ({ itemList, selectedPill = () => {} }) => {
+const Pills = ({ itemLst, selectedPill = () => {} }) => {
+  let [itemList, setItemList] = useState(itemLst);
+console.log(itemLst);
   const handleClick = (item) => {
-    item.selected = !item.selected;
+    let clonedArray = JSON.parse(JSON.stringify(itemList));
+    for(let i = 0; i < clonedArray.length; i++) {
+      if(clonedArray[i]['id'] == item['id']) {
+        clonedArray[i].selected = !clonedArray[i].selected;
+      }
+    }
+    setItemList(clonedArray);
     selectedPill(item);
   };
   if (!itemList) {
