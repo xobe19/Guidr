@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-
 import CourseCard from "../components/CourseCard";
 import CourseraCard from "../components/CourseraCard";
 import CodeacademyCard from "../components/CodeacademyCard";
@@ -24,6 +23,10 @@ const courses = () => {
     await fetch(`/api/getCodecademyCoursesData?jobName=${jobName}&limit=3`)
       .then((response) => response.json())
       .then((data) => setcodecademyData(data));
+
+    // await fetch(`/api/getExtraDataforJob?jobName?jobName=${jobName}&limit=0`)
+    //   .then((response) => response.json())
+    //   .then((data) => setcodecademyData(data));
   };
 
   useEffect(() => {
@@ -37,7 +40,6 @@ const courses = () => {
 
       <div className="mx-auto w-fit">
         {UdemyData.map((UdemyData) => {
-          console.log(UdemyData.Link);
           return (
             <CourseCard
               Name={UdemyData.Title}
