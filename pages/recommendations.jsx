@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import JobCard from "../components/JobCard";
 import Navbar from "../components/Navbar";
 
-const recommedations = () => {
+const recommendations = () => {
   // console.log(router.query);
   // let { job } = router.query;
   // let arrJobs = job.split(',');
@@ -29,10 +29,10 @@ const recommedations = () => {
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
           <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">
-              Hi ! Thanks for Suvery
+              Hi ! Thanks for Survey
             </h2>
             <p className="font-light text-gray-500 lg:mb-16 sm:text-xl ">
-              Curated Lists of Job Recommedations which suits your interest
+              Curated Lists of Job Recommendations which suits your interest
             </p>
           </div>
 
@@ -47,4 +47,4 @@ const recommedations = () => {
   );
 };
 
-export default recommedations;
+export default recommendations;

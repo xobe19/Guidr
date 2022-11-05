@@ -347,7 +347,7 @@ const survey = () => {
                       finString += recommendedJobs[key] + ",";
                     }
                     finString += ",";
-                    router.push(`/Recommedations?job=${finString}`);
+                    router.push(`/recommendations?job=${finString}`);
                     // console.log(
                     //   ugOptions,
                     //   skillsOptions,

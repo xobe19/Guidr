@@ -48,7 +48,7 @@ const MainPage = () => {
               The best way to choose your Career
             </p>
             <p className="max-w-2xl text-gray-500 lg:mx-auto">
-              Recommedation System based on Learning patterns
+              Recommendation System based on Learning patterns
             </p>
           </div>
 
@@ -75,7 +75,7 @@ const MainPage = () => {
                     </svg>
                   </div>
                   <p className="ml-16 text-lg font-medium leading-6 text-gray-900">
-                    Job Recommedation
+                    Job Recommendation
                   </p>
                 </dt>
                 <dd className="mt-2 ml-16 text-base text-gray-500">
