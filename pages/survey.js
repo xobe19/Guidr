@@ -151,9 +151,18 @@ const survey = () => {
               )}
               <div className="mt-8">
                 <button
-                  className="inline-block bg-indigo-600 border border-indigo-500 focus:outline-none focus:shadow-outline hover:bg-indigo-700 px-4 py-2 lg:px-6 lg:py-4 lg:text-xl rounded-md select-none text-white font-medium"
+                  className={`inline-block ${
+                    ugOptions.filter((ele) => ele.selected).length
+                      ? "bg-indigo-700"
+                      : "bg-gray-500"
+                  } border border-indigo-500 focus:outline-none focus:shadow-outline hover:${
+                    ugOptions.filter((ele) => ele.selected).length
+                      ? "bg-indigo-700"
+                      : "bg-gray-500"
+                  } px-4 py-2 lg:px-6 lg:py-4 lg:text-xl rounded-md select-none text-white font-medium`}
                   onClick={() => {
-                    setCurrStep(currStep + 1);
+                    let ugSelected = ugOptions.filter((ele) => ele.selected);
+                    if (ugSelected.length) setCurrStep(currStep + 1);
                   }}
                 >
                   Next ➜
@@ -189,9 +198,18 @@ const survey = () => {
               )}
               <div className="mt-5">
                 <button
-                  className="inline-block bg-indigo-600 border border-indigo-500 focus:outline-none focus:shadow-outline hover:bg-indigo-700 px-4 py-2 lg:px-6 lg:py-4 lg:text-xl rounded-md select-none text-white font-medium"
+                  className={`inline-block ${
+                    specOptions.filter((ele) => ele.selected).length
+                      ? "bg-indigo-700"
+                      : "bg-gray-500"
+                  } border border-indigo-500 focus:outline-none focus:shadow-outline hover:${
+                    specOptions.filter((ele) => ele.selected).length
+                      ? "bg-indigo-700"
+                      : "bg-gray-500"
+                  } px-4 py-2 lg:px-6 lg:py-4 lg:text-xl rounded-md select-none text-white font-medium`}
                   onClick={() => {
-                    setCurrStep(currStep + 1);
+                    let temp = specOptions.filter((ele) => ele.selected);
+                    if (temp.length) setCurrStep(currStep + 1);
                   }}
                 >
                   Next ➜
@@ -228,9 +246,18 @@ const survey = () => {
               )}
               <div className="mt-5">
                 <button
-                  className="inline-block bg-indigo-600 border border-indigo-500 focus:outline-none focus:shadow-outline hover:bg-indigo-700 px-4 py-2 lg:px-6 lg:py-4 lg:text-xl rounded-md select-none text-white font-medium"
+                  className={`inline-block ${
+                    skillsOptions.filter((ele) => ele.selected).length
+                      ? "bg-indigo-700"
+                      : "bg-gray-500"
+                  } border border-indigo-500 focus:outline-none focus:shadow-outline hover:${
+                    skillsOptions.filter((ele) => ele.selected).length
+                      ? "bg-indigo-700"
+                      : "bg-gray-500"
+                  } px-4 py-2 lg:px-6 lg:py-4 lg:text-xl rounded-md select-none text-white font-medium`}
                   onClick={() => {
-                    setCurrStep(currStep + 1);
+                    let temp = skillsOptions.filter((ele) => ele.selected);
+                    if (temp.length) setCurrStep(currStep + 1);
                   }}
                 >
                   Next ➜
@@ -269,9 +296,18 @@ const survey = () => {
               )}
               <div className="mt-5">
                 <button
-                  className="inline-block bg-indigo-600 border border-indigo-500 focus:outline-none focus:shadow-outline hover:bg-indigo-700 px-4 py-2 lg:px-6 lg:py-4 lg:text-xl rounded-md select-none text-white font-medium"
+                  className={`inline-block ${
+                    interestsOptions1.filter((ele) => ele.selected).length
+                      ? "bg-indigo-700"
+                      : "bg-gray-500"
+                  } border border-indigo-500 focus:outline-none focus:shadow-outline hover:${
+                    interestsOptions1.filter((ele) => ele.selected).length
+                      ? "bg-indigo-700"
+                      : "bg-gray-500"
+                  } px-4 py-2 lg:px-6 lg:py-4 lg:text-xl rounded-md select-none text-white font-medium`}
                   onClick={() => {
-                    setCurrStep(currStep + 1);
+                    let temp = interestsOptions1.filter((ele) => ele.selected);
+                    if (temp.length) setCurrStep(currStep + 1);
                   }}
                 >
                   Next ➜
