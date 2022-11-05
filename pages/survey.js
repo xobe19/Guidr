@@ -75,6 +75,9 @@ const survey = () => {
     let interestsOpt2 = interestsOpt.filter(
       (ele) => !interestsOpt1.includes(ele)
     );
+    interestsOpt2 = interestsOpt2.filter((ele) => {
+      return ele.includes(",") == false && ele.includes(";") == false;
+    });
     interestsOpt1 = interestsOpt1.map((ele, idx) => {
       return {
         text: ele,
