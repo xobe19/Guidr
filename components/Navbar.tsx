@@ -7,7 +7,6 @@ function Navbar(props: any) {
     { title: "Home", url: "#" },
     { title: "Features", url: "#features" },
     { title: "How it Works", url: "#how-it-works" },
-    { title: "About", url: "#" },
   ];
 
   return (
