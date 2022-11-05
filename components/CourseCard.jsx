@@ -18,14 +18,13 @@ const CourseCard = (props) => {
         <a
           href={props.coursesLink}
           target="_blank"
-          onClick={async (e) => {
-            fetch(
-              "/api/addCourseToHistory?email=" +
-                props.email +
-                "&provider=udemy&title=" +
-                props.Name
-            );
-          }}
+            onClick={async (e) => {
+            await fetch('/api/addCourseToHistory?email='+props.email+'&provider=udemy&title='+props.Name) 
+            await fetch(`/api/sendEmail?message=Congratulations for Registering a new course of ${props.Name}. All the best!`);
+            }}
+
+
+
           className="inline-flex items-center text-blue-600 hover:underline"
         >
           Link

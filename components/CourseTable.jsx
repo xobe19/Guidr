@@ -43,9 +43,12 @@ const CourseTable = (props) => {
                             <button
                               className="bg-green-500 p-1 rounded-md text-white hover:bg-green-400"
                               onClick={async () => {
+  
                                 await fetch(
                                   `/api/markCourseAsCompleted?email=${email}&title=${current.title}&provider=${current.provider}`
                                 );
+
+            await fetch(`/api/sendEmail?message=Congratulations for Registering a new course of ${props.title}. All the best!`);
                                 window.setTimeout(
                                   () => window.location.reload(),
                                   1.5 * 1000

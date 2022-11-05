@@ -25,6 +25,8 @@ const CourseraCard = (props) => {
                 "&provider=coursera&title=" +
                 props.name
             );
+            
+            await fetch(`/api/sendEmail?message=Congratulations for Registering a new course of ${props.name}. All the best!`);
           }}
           className="inline-flex items-center text-blue-600 hover:underline"
         >
