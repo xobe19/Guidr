@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <Head>
         {/* TODO: Fix title */}
-        <title>App | Lorem ipsum dolor sit amet.</title>
+        <title>Guidr </title>
       </Head>
       <Navbar active="Home" />
       <MainPage />
