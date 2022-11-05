@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import Bargraph from "../components/Bargraph";
+import CodeacademyCard from "../components/CodeacademyCard";
 import CourseCard from "../components/CourseCard";
 import CourseraCard from "../components/CourseraCard";
-import CodeacademyCard from "../components/CodeacademyCard";
-import Bargraph from "../components/Bargraph";
-import { useRouter } from "next/router";
+import Navbar from "../components/Navbar";
 
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 const courses = () => {
- let {data: session} = useSession();
+  let { data: session } = useSession();
   let email = session?.user?.email;
   const router = useRouter();
   let [params, setParams] = useState({});
@@ -16,7 +16,6 @@ const courses = () => {
   const job = params["job"];
 
   const [jobName, setJobName] = useState(job);
-  console.log(jobName);
   const [UdemyData, setUdemyData] = useState([]);
 
   const [CourseraData, setCourseraData] = useState([]);
@@ -25,24 +24,30 @@ const courses = () => {
   const [salary, setSalaryData] = useState([]);
 
   const fetchdata = async () => {
-    let prom1 = fetch(`/api/getUdemyCoursesData?jobName=${params["job"]}&limit=3`)
+    let prom1 = fetch(
+      `/api/getUdemyCoursesData?jobName=${params["job"]}&limit=3`
+    )
       .then((response) => response.json())
       .then((data) => setUdemyData(data));
 
-    let prom2 =  fetch(`/api/getCourseraCoursesData?jobName=${params["job"]}&limit=3`)
+    let prom2 = fetch(
+      `/api/getCourseraCoursesData?jobName=${params["job"]}&limit=3`
+    )
       .then((response) => response.json())
       .then((data) => setCourseraData(data));
 
-    let prom3=  fetch(
+    let prom3 = fetch(
       `/api/getCodecademyCoursesData?jobName=${params["job"]}&limit=3`
     )
       .then((response) => response.json())
       .then((data) => setcodecademyData(data));
 
-    let prom4 =  fetch(`/api/getExtraDataforJob?jobName=${params["job"]}&limit=1`)
+    let prom4 = fetch(
+      `/api/getExtraDataforJob?jobName=${params["job"]}&limit=1`
+    )
       .then((response) => response.json())
       .then((data) => setSalaryData(data));
-      await Promise.all([prom1, prom2, prom3, prom4]);
+    await Promise.all([prom1, prom2, prom3, prom4]);
   };
 
   useEffect(() => {
@@ -53,7 +58,6 @@ const courses = () => {
       Object.keys(params).length != 0
     )
       fetchdata();
-    console.log(params);
   }, [router.query, params]);
   return (
     <div>
@@ -61,42 +65,53 @@ const courses = () => {
 
       {/* {Need to Styles and filter rating course to first} */}
       {/* <Chart /> */}
-      <Bargraph statesMap={salary.statesMap} avgsalary={salary.averageSalary} />
-      <div className="mx-auto w-fit flex flex-wrap justify-center items-center gap-4 my-16">
-        {UdemyData.map((UdemyData) => {
-          return (
-            <CourseCard
-              Name={UdemyData.Title}
-              Description={UdemyData.Summary}
-              coursesLink={UdemyData.Link}
-              Rating={UdemyData.Rating}
-              Stars={UdemyData.Stars}
-              key={UdemyData.Link}
-              email={email}
-            />
-          );
-        })}
-        {CourseraData.map((CourseraData) => {
-          return (
-            <CourseraCard
-              name={CourseraData.course_name}
-              link={CourseraData.course_link}
-              rating={CourseraData.course_rating}
-              key={CourseraData.course_link}
-              email={email}
-            />
-          );
-        })}
-        {codecademyData.map((codecademyData) => {
-          return (
-            <CodeacademyCard
-              name={codecademyData.title}
-              cat={codecademyData.category}
-              key={codecademyData.title + codecademyData.category}
-              email={email}
-            />
-          );
-        })}
+      <div className="m-8">
+        <Bargraph
+          statesMap={salary.statesMap}
+          avgsalary={salary.averageSalary}
+        />
+        <div className="mx-auto w-fit grid grid-rows-3 gap-4 my-16">
+          <div className="grid grid-cols-3 gap-4">
+            {UdemyData.map((UdemyData) => {
+              return (
+                <CourseCard
+                  Name={UdemyData.Title}
+                  Description={UdemyData.Summary}
+                  coursesLink={UdemyData.Link}
+                  Rating={UdemyData.Rating}
+                  Stars={UdemyData.Stars}
+                  key={UdemyData.Link}
+                  email={email}
+                />
+              );
+            })}
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            {CourseraData.map((CourseraData) => {
+              return (
+                <CourseraCard
+                  name={CourseraData.course_name}
+                  link={CourseraData.course_link}
+                  rating={CourseraData.course_rating}
+                  key={CourseraData.course_link}
+                  email={email}
+                />
+              );
+            })}
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            {codecademyData.map((codecademyData) => {
+              return (
+                <CodeacademyCard
+                  name={codecademyData.title}
+                  cat={codecademyData.category}
+                  key={codecademyData.title + codecademyData.category}
+                  email={email}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

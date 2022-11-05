@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/react";
 function Navbar(props: any) {
-    const { data: session } = useSession()
+  const { data: session } = useSession();
 
   const links = [
     { title: "Home", url: "#" },
@@ -68,21 +68,22 @@ function Navbar(props: any) {
                 )}
               </li>
             ))}
- <li key={99}>
-                {!session ? (
+            <li key={99}>
+              {!session ? (
+                <a
+                  className="cursor-pointer block py-2 pr-4 pl-3  bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-white"
+                  aria-current="page"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    signIn();
+                  }}
+                >
+                  Login
+                </a>
+              ) : (
+                <>
                   <a
-                    className="block py-2 pr-4 pl-3  bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-white"
-                    aria-current="page"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      signIn();
-                    }}
-                  >
-                    Login 
-                  </a>
-                ) : (
-                  <a
-                    className="block py-2 pr-4 pl-3  bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-white"
+                    className="cursor-pointer block py-2 pr-4 pl-3  bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 text-white"
                     onClick={(e) => {
                       e.preventDefault();
                       signOut();
@@ -90,9 +91,18 @@ function Navbar(props: any) {
                   >
                     Logout
                   </a>
-                )}
+                </>
+              )}
+            </li>
+            {session ? (
+              <li>
+                <a href="/profile">
+                  <img src={session.user?.image!} className="h-6" />
+                </a>
               </li>
-
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
       </div>

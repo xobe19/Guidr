@@ -120,7 +120,10 @@ const survey = () => {
             </span>
             <div>
               {isLoading ? (
-                <Image width={150} height={150} src="/num77.gif" />
+                <>
+                  <Image width={150} height={150} src="/num77.gif" />
+                  <span>Loading, please wait...</span>
+                </>
               ) : ugOptions.length == 0 ? (
                 <></>
               ) : (
@@ -336,10 +339,8 @@ const survey = () => {
                     );
                     recommendedJobs = await recommendedJobs.json();
                     recommendedJobs = recommendedJobs["recommendations"][0];
-                    console.log(recommendedJobs);
                     let finString = "";
                     for (let key in recommendedJobs) {
-                      console.log(recommendedJobs[key]);
                       finString += recommendedJobs[key] + ",";
                     }
                     finString += ",";

@@ -1,7 +1,7 @@
-import Navbar from "../components/Navbar";
-import JobCard from "../components/JobCard";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import JobCard from "../components/JobCard";
+import Navbar from "../components/Navbar";
 
 const recommedations = () => {
   // console.log(router.query);
@@ -16,7 +16,6 @@ const recommedations = () => {
 
   useEffect(() => {
     setParams(router.query);
-    console.log(params);
   }, [router.query]);
   return params == undefined ||
     params == null ||

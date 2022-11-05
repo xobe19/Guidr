@@ -1,19 +1,16 @@
-import Navbar from "../components/Navbar";
-import ActivityGraph from "../components/ActivityGraph";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import ActivityGraph from "../components/ActivityGraph";
 import CourseTable from "../components/CourseTable";
+import Navbar from "../components/Navbar";
 const profile = () => {
   const { data: session } = useSession();
-  console.log(session);
   let name = session?.user?.name;
   let email = session?.user?.email;
   let imageUrl = session?.user?.image;
-  console.log(email + "outer");
   let [data, setData] = useState([]);
 
   const fetchData = async (email) => {
-    console.log("test" + email);
     let tmp = await fetch("/api/getCourseHistory?email=" + email);
     tmp = await tmp.json();
     setData(tmp["data"]);
@@ -50,7 +47,7 @@ const profile = () => {
             </div>
             <div className="relative">
               <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
-                <img src={`${imageUrl}`}></img>
+                <img src={`${imageUrl}`} className="w-full h-full" />
               </div>
             </div>
             <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center items-center">
