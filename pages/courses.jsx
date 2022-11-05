@@ -69,7 +69,17 @@ const courses = () => {
         <Bargraph
           statesMap={salary.statesMap}
           avgsalary={salary.averageSalary}
+          jobName = {salary.jobName}
         />
+        <div className="h-[25px]"></div>
+      <h1 className="text-3xl font-extrabold text-black">
+       Top Courses From:  
+        <span class="text-blue-500">
+          {" Udemy, Coursera and Codecademy" }
+        </span>
+      </h1>
+
+
         <div className="mx-auto w-fit grid grid-rows-3 gap-4 my-16">
           <div className="grid grid-cols-3 gap-4">
             {UdemyData.map((UdemyData) => {

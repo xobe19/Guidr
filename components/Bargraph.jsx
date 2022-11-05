@@ -63,10 +63,10 @@ export default function BarGraph(props) {
 
   return (
     <>
-      <h1 className="text-5xl font-extrabold text-black">
-        Average Salary of :{" "}
+      <h1 className="text-3xl font-extrabold text-black">
+        Average Salary of {props.jobName}
         <span class="text-blue-500">
-          {rupeeIndian.format(Math.trunc(props.avgsalary))}
+          {" " + rupeeIndian.format(Math.trunc(props.avgsalary))}
         </span>
       </h1>
 

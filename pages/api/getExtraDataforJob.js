@@ -42,5 +42,5 @@ export default async function getExtraDataforJob(
     else statesMap[statesArray[i]] = 1;
   }
 
-  res.json({ averageSalary, medianSalary, statesMap, result });
+  res.json({ averageSalary, medianSalary, statesMap, result, jobName });
 }

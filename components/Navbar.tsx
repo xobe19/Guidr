@@ -4,9 +4,9 @@ function Navbar(props: any) {
   const { data: session } = useSession();
 
   const links = [
-    { title: "Home", url: "#" },
-    { title: "Features", url: "#features" },
-    { title: "How it Works", url: "#how-it-works" },
+    { title: "Home", url: "/" },
+    { title: "Features", url: "/#features" },
+    { title: "How it Works", url: "/#how-it-works" },
   ];
 
   return (
