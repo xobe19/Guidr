@@ -17,6 +17,12 @@ const CourseCard = (props) => {
         <p className="mb-3 font-normal text-gray-400">{props.Description}</p>
         <a
           href={props.coursesLink}
+          target="_blank"
+            onClick={async (e) => {
+             fetch('/api/addCourseToHistory?email='+props.email+'&provider=udemy&title='+props.Name) 
+            }}
+
+
           className="inline-flex items-center text-blue-600 hover:underline"
         >
           Link

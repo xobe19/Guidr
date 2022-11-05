@@ -21,6 +21,10 @@ const CodeacademyCard = (props) => {
               " ",
               "-"
             )}#:~:text=${props.name}`}
+            target="_blank"
+            onClick={async (e) => {
+           await  fetch('/api/addCourseToHistory?email='+props.email+'&provider=codecademy&title='+props.name) 
+            }}
             className="inline-flex items-center text-blue-600 hover:underline"
           >
             Link

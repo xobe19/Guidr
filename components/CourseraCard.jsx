@@ -18,6 +18,12 @@ const CourseraCard = (props) => {
           <p className="mb-3 font-normal  text-gray-400"></p>
           <a
             href={props.link}
+          target="_blank"
+            onClick={async (e) => {
+              console.log('called here');
+           await  fetch('/api/addCourseToHistory?email='+props.email+'&provider=coursera&title='+props.name) 
+            }}
+
             className="inline-flex items-center text-blue-600 hover:underline"
           >
             Link

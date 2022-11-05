@@ -1,5 +1,6 @@
 import React from "react";
 const CourseTable = (props) => {
+  console.log('hh', props.data);
   let email = props.email;
   return (
     <div>
@@ -26,7 +27,7 @@ const CourseTable = (props) => {
                     </tr>
                   </thead>
                   {props.data.map((current) => {
-                    <tbody className="text-sm divide-y divide-gray-100">
+                  return  <tbody className="text-sm divide-y divide-gray-100">
                       <tr>
                         <td className="p-2 whitespace-nowrap">
                           <div className="flex items-center">

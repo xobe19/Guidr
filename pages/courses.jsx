@@ -5,7 +5,11 @@ import CourseraCard from "../components/CourseraCard";
 import CodeacademyCard from "../components/CodeacademyCard";
 import Bargraph from "../components/Bargraph";
 import { useRouter } from "next/router";
+
+import { useSession, signIn, signOut } from "next-auth/react";
 const courses = () => {
+ let {data: session} = useSession();
+  let email = session?.user?.email;
   const router = useRouter();
   let [params, setParams] = useState({});
 
@@ -21,23 +25,24 @@ const courses = () => {
   const [salary, setSalaryData] = useState([]);
 
   const fetchdata = async () => {
-    await fetch(`/api/getUdemyCoursesData?jobName=${params["job"]}&limit=3`)
+    let prom1 = fetch(`/api/getUdemyCoursesData?jobName=${params["job"]}&limit=3`)
       .then((response) => response.json())
       .then((data) => setUdemyData(data));
 
-    await fetch(`/api/getCourseraCoursesData?jobName=${params["job"]}&limit=3`)
+    let prom2 =  fetch(`/api/getCourseraCoursesData?jobName=${params["job"]}&limit=3`)
       .then((response) => response.json())
       .then((data) => setCourseraData(data));
 
-    await fetch(
+    let prom3=  fetch(
       `/api/getCodecademyCoursesData?jobName=${params["job"]}&limit=3`
     )
       .then((response) => response.json())
       .then((data) => setcodecademyData(data));
 
-    await fetch(`/api/getExtraDataforJob?jobName=${params["job"]}&limit=1`)
+    let prom4 =  fetch(`/api/getExtraDataforJob?jobName=${params["job"]}&limit=1`)
       .then((response) => response.json())
       .then((data) => setSalaryData(data));
+      await Promise.all([prom1, prom2, prom3, prom4]);
   };
 
   useEffect(() => {
@@ -66,7 +71,8 @@ const courses = () => {
               coursesLink={UdemyData.Link}
               Rating={UdemyData.Rating}
               Stars={UdemyData.Stars}
-              key={UdemyData.Title}
+              key={UdemyData.Link}
+              email={email}
             />
           );
         })}
@@ -76,7 +82,8 @@ const courses = () => {
               name={CourseraData.course_name}
               link={CourseraData.course_link}
               rating={CourseraData.course_rating}
-              key={CourseraData.course_name}
+              key={CourseraData.course_link}
+              email={email}
             />
           );
         })}
@@ -85,7 +92,8 @@ const courses = () => {
             <CodeacademyCard
               name={codecademyData.title}
               cat={codecademyData.category}
-              key={codecademyData.title}
+              key={codecademyData.title + codecademyData.category}
+              email={email}
             />
           );
         })}
