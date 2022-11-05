@@ -63,9 +63,9 @@ export default function BarGraph(props) {
 
   return (
     <>
-      <h1 className="text-5xl font-extrabold dark:text-black">
+      <h1 className="text-5xl font-extrabold text-black">
         Average Salary of :{" "}
-        <span class="text-blue-600 dark:text-blue-500">
+        <span class="text-blue-500">
           {rupeeIndian.format(Math.trunc(props.avgsalary))}
         </span>
       </h1>
