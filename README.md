@@ -1,5 +1,5 @@
 
-<h1> Guidr </h1>
+<h1> Guidr - Job Recommendation System </h1>
 
 
 
