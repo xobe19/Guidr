@@ -27,7 +27,7 @@
 * [Career Survey Dataset](https://www.kaggle.com/datasets/breejeshdhar/career-recommendation-dataset)
 * [Udemy Courses Dataset (42k+ Courses)](https://www.kaggle.com/datasets/songseungwon/2020-udemy-courses-dataset)
 * [Coursera Courses Dataset](https://www.kaggle.com/datasets/khusheekapoor/coursera-courses-dataset-2021)
-
+* [Indeed India Job Posting Dataset](https://www.kaggle.com/datasets/promptcloud/job-dataset-indeed-india)
 # Youtube Demo ( Click to Play )
 <div align="center">
 
@@ -40,6 +40,14 @@
 <p align="center">
   <img  src="https://user-images.githubusercontent.com/79440952/200580935-39e42481-3f5e-4567-a2eb-0f38657b2735.png">
 </p>
+
+# Features
+
+1) Personalized Job recommendations based on a simple 5-Step Quiz
+2) Relevant Job Details ( Average Salary, Indian States Statistics ) for every job recommended
+3) Course Recommendations for Each Job from Udemy, Coursera & Codecademy
+4) Progress Tracker & GitHub - Style Activity Chart
+5) Authentication & Profile Sharing 
 
 
 # Screenshots 
