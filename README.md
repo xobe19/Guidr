@@ -5,10 +5,7 @@
 
 *One stop for Guided path, learning resources, projects, research and development and latest trends*
 
-<p align="center">
-  <a href="https://github.com/xobe19/Guidr"><img src="https://img.shields.io/github/forks/xobe19/Guidr?style=for-the-badge&logo=appveyor" /></a>&nbsp;&nbsp;
-  <a href="#"><img src="https://img.shields.io/github/stars/xobe19/Guidr?style=for-the-badge&logo=appveyor"/></a>&nbsp;&nbsp;
-</p>
+
               
 <p align="center">
   <img src="https://user-images.githubusercontent.com/79440952/200589104-8b68da89-11e7-40c4-80e9-cb7bebfb9fc1.png">
