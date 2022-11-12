@@ -4,9 +4,22 @@
 
 
 *One stop for Guided path, learning resources, projects, research and development and latest trends*
+<p align="center">
+  <a href="https://github.com/xobe19/Guidr/fork"><img src="https://img.shields.io/github/forks/xobe19/Guidr?style=for-the-badge&logo=appveyor" /></a>&nbsp;&nbsp;
+  <a href="#"><img src="https://img.shields.io/github/stars/xobe19/Guidr?style=for-the-badge&logo=appveyor"/></a>&nbsp;&nbsp;
+</p>
+
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi) 
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) 
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) 
+![Chart.js](https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white) 
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) 
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) 
 
 
-              
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/79440952/200589104-8b68da89-11e7-40c4-80e9-cb7bebfb9fc1.png">
 </p>
@@ -15,6 +28,8 @@
      
 
 # Tech Stack
+
+
 
 1) Next.js
 2) Python FastAPI
