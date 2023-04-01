@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar";
 
 import { useSession } from "next-auth/react";
 import Jobs from "../components/Jobs";
-const courses = () => {
+const Courses = () => {
   let { data: session } = useSession();
   let email = session?.user?.email;
   const router = useRouter();
@@ -133,4 +133,4 @@ const courses = () => {
   );
 };
 
-export default courses;
+export default Courses;
