@@ -48,7 +48,8 @@ const CourseTable = (props) => {
                                   `/api/markCourseAsCompleted?email=${email}&title=${current.title}&provider=${current.provider}`
                                 );
 
-            await fetch(`/api/sendEmail?message=Congratulations for Finsihinge the course ${props.title}. All the best!`);
+
+            await fetch(`/api/sendEmail?to_email=${props.email}&message=Congratulations for finishing course ${current.title} on ${current.provider}. All the best!`);
                                 window.setTimeout(
                                   () => window.location.reload(),
                                   1.5 * 1000
