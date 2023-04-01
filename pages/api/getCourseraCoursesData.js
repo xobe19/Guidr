@@ -7,9 +7,28 @@ export default async function getCourseraCoursesData(
   const client = await clientPromise;
   const db = client.db("guidr");
   const collection = db.collection("coursera");
-  const result = await collection
-    .find({ $text: { $search: jobName } })
-    .limit(limit * 1)
-    .toArray();
-  res.json(result);
+
+
+  const res2 = await collection.aggregate(
+    [
+  {
+    $search: {
+      index: "coursera_index",
+      text: {
+        query: jobName,
+        path: {
+          wildcard: "*"
+        }
+      }
+    }
+  }
+]
+  ).limit(limit * 1).toArray();
+
+
+  // const result = await collection
+  //   .find({ $text: { $search: jobName } })
+  //   .limit(limit * 1)
+  //   .toArray();
+  res.json(res2);
 }

@@ -7,6 +7,7 @@ import CourseraCard from "../components/CourseraCard";
 import Navbar from "../components/Navbar";
 
 import { useSession } from "next-auth/react";
+import Jobs from "../components/Jobs";
 const courses = () => {
   let { data: session } = useSession();
   let email = session?.user?.email;
@@ -22,6 +23,7 @@ const courses = () => {
   const [codecademyData, setcodecademyData] = useState([]);
 
   const [salary, setSalaryData] = useState([]);
+  
 
   const fetchdata = async () => {
     let prom1 = fetch(
@@ -71,6 +73,12 @@ const courses = () => {
           avgsalary={salary.averageSalary}
           jobName={salary.jobName}
         /> */}
+
+{params["job"] && params["job"] != "" ? 
+
+
+        <Jobs jobName={params["job"]}></Jobs> : <></>
+}
         <div className="h-[25px]"></div>
         <h1 className="text-3xl font-extrabold text-black">
           Top Courses From:
