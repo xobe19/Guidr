@@ -20,7 +20,8 @@ const CourseCard = (props) => {
           target="_blank"
             onClick={async (e) => {
             await fetch('/api/addCourseToHistory?email='+props.email+'&provider=udemy&title='+props.Name) 
-            await fetch(`/api/sendEmail?message=Congratulations for Registering a new course of ${props.Name}. All the best!`);
+
+            await fetch(`/api/sendEmail?to_email=${props.email}&message=Congratulations for Registering a new course of ${props.Name}. All the best!`);
             }}
 
 

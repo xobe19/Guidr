@@ -1,7 +1,7 @@
 import { data } from "autoprefixer";
 import axios from "axios";
 
-export default async function sendEmail({ query: { message } }, res) {
+export default async function sendEmail({ query: { message, to_email } }, res) {
   let public_key = process.env.public_key;
   let priv_key = process.env.priv_key;
   let template_id = process.env.template_id;
@@ -14,6 +14,7 @@ export default async function sendEmail({ query: { message } }, res) {
     template_params: {
       from_name: "Guidr Support Team",
       message,
+      to_email
     },
   };
 

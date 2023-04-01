@@ -31,9 +31,7 @@ const CodeacademyCard = (props) => {
                   props.name
               );
 
-              await fetch(
-                `/api/sendEmail?message=Congratulations for Registering a new course of ${props.name}. All the best!`
-              );
+            await fetch(`/api/sendEmail?to_email=${props.email}&message=Congratulations for Registering a new course of ${props.name}. All the best!`);
             }}
             className="inline-flex items-center text-blue-600 hover:underline"
           >
