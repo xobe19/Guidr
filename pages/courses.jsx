@@ -42,12 +42,12 @@ const courses = () => {
       .then((response) => response.json())
       .then((data) => setcodecademyData(data));
 
-    let prom4 = fetch(
-      `/api/getExtraDataforJob?jobName=${params["job"]}&limit=1`
-    )
-      .then((response) => response.json())
-      .then((data) => setSalaryData(data));
-    await Promise.all([prom1, prom2, prom3, prom4]);
+    // let prom4 = fetch(
+    //   `/api/getExtraDataforJob?jobName=${params["job"]}&limit=1`
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => setSalaryData(data));
+    await Promise.all([prom1, prom2, prom3]);
   };
 
   useEffect(() => {
@@ -66,23 +66,21 @@ const courses = () => {
       {/* {Need to Styles and filter rating course to first} */}
       {/* <Chart /> */}
       <div className="m-8">
-        <Bargraph
+        {/* <Bargraph
           statesMap={salary.statesMap}
           avgsalary={salary.averageSalary}
-          jobName = {salary.jobName}
-        />
+          jobName={salary.jobName}
+        /> */}
         <div className="h-[25px]"></div>
-      <h1 className="text-3xl font-extrabold text-black">
-       Top Courses From:  
-        <span class="text-blue-500">
-          {" Udemy, Coursera and Codecademy" }
-        </span>
-      </h1>
-
+        <h1 className="text-3xl font-extrabold text-black">
+          Top Courses From:
+          <span class="text-blue-500">{" Udemy, Coursera and Codecademy"}</span>
+        </h1>
 
         <div className="mx-auto w-fit grid grid-rows-3 gap-4 my-16">
           <div className="grid grid-cols-3 gap-4">
             {UdemyData.map((UdemyData) => {
+              console.log(UdemyData);
               return (
                 <CourseCard
                   Name={UdemyData.Title}
@@ -114,8 +112,8 @@ const courses = () => {
               return (
                 <CodeacademyCard
                   name={codecademyData.title}
-                  cat={codecademyData.category}
-                  key={codecademyData.title + codecademyData.category}
+                  cat={codecademyData.type}
+                  key={codecademyData.title + codecademyData.type}
                   email={email}
                 />
               );

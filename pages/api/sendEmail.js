@@ -2,10 +2,10 @@ import { data } from "autoprefixer";
 import axios from "axios";
 
 export default async function sendEmail({ query: { message } }, res) {
-  let public_key = "kDtTwPjPyGxxUySm5";
-  let priv_key = "r3X6hw0CbAdzqZSMM71TF";
-  let template_id = "template_27ktgkn";
-  let service_id = "service_3e14pbv";
+  let public_key = process.env.public_key;
+  let priv_key = process.env.priv_key;
+  let template_id = process.env.template_id;
+  let service_id = process.env.service_id;
   const api_url = "https://api.emailjs.com/api/v1.0/email/send";
   const data = {
     service_id,

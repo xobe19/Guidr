@@ -15,12 +15,13 @@ const CodeacademyCard = (props) => {
               {props.name}
             </h5>
           </a>
-          <p className="mb-3 font-normal text-gray-400">{props.cat}</p>
+          <p className="mb-3 font-normal text-gray-400">{props.title}</p>
+
           <a
-            href={`https://www.codecademy.com/catalog/subject/${props.cat.replace(
-              " ",
-              "-"
-            )}#:~:text=${props.name}`}
+            href={`https://www.codecademy.com/search?query=${props.title}'}
+            )}
+            
+            #:~:text=${props.title}`}
             target="_blank"
             onClick={async (e) => {
               await fetch(
@@ -30,7 +31,9 @@ const CodeacademyCard = (props) => {
                   props.name
               );
 
-            await fetch(`/api/sendEmail?message=Congratulations for Registering a new course of ${props.name}. All the best!`);
+              await fetch(
+                `/api/sendEmail?message=Congratulations for Registering a new course of ${props.name}. All the best!`
+              );
             }}
             className="inline-flex items-center text-blue-600 hover:underline"
           >

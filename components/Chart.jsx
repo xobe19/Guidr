@@ -1,7 +1,6 @@
 import React from "react";
 import info from "./../components/info";
 import { Line } from "react-chartjs-2";
-import * as faker from "faker";
 import {
   Chart as ChartJS,
   CategoryScale,

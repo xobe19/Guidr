@@ -9,10 +9,9 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Pills from "../components/Pills";
-
 import { MultiStepForm, Step } from "react-multi-form";
 const survey = () => {
-  const api_url = "https://fierce-chamber-30988.herokuapp.com";
+  const api_url = "https://cra-nu.vercel.app";
   const router = useRouter();
   let [ugOptions, setUgOptions] = useState([]);
   let [specOptions, setSpecOptions] = useState([]);
@@ -367,15 +366,18 @@ const survey = () => {
                         .filter((ele) => ele.selected)
                         .map((ele) => ele.text)
                         .join(",") + ",";
-                    let recommendedJobs = await fetch(
-                      `https://fierce-chamber-30988.herokuapp.com/getRecommendations?selected_ug=${
-                        ugSelected[0].text
-                      }&selected_Specialization=${
-                        specSelected[0].text
-                      }&skills_array=${skillsSelected}&interests_array=${
-                        interestsOpt1 + interestsOpt2
-                      }`
-                    );
+
+                    let recommendedJobs = `https://cra-nu.vercel.app/getRecommendations?selected_ug=${
+                      ugSelected[0].text
+                    }&selected_Specialization=${
+                      specSelected[0].text
+                    }&skills_array=${skillsSelected}&interests_array=${
+                      interestsOpt1 + interestsOpt2
+                    }`;
+
+                    console.log(recommendedJobs);
+                    recommendedJobs = await fetch(recommendedJobs);
+
                     recommendedJobs = await recommendedJobs.json();
                     recommendedJobs = recommendedJobs["recommendations"][0];
                     let finString = "";
