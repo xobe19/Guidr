@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ActivityGraph from "../components/ActivityGraph";
 import CourseTable from "../components/CourseTable";
 import Navbar from "../components/Navbar";
-const profile = () => {
+const Profile = () => {
   const { data: session } = useSession();
   let name = session?.user?.name;
   let email = session?.user?.email;
@@ -55,7 +55,7 @@ const profile = () => {
                 <span className="mr-4">Share on</span>
                 {/* TODO: change shared text */}
                 {/* LinkedIn */}
-                <a href="https://www.linkedin.com/cws/share" target="_blank">
+                <a href="https://www.linkedin.com/cws/share" target="_blank" rel="noreferrer">
                   <svg
                     fill="#0A66C2"
                     viewBox="0 0 24 24"
@@ -66,7 +66,7 @@ const profile = () => {
                   </svg>
                 </a>
                 {/* WhatsApp */}
-                <a href="https://wa.me/?text=<text here>" target="_blank">
+                <a href="https://wa.me/?text=<text here>" target="_blank" rel="noreferrer">
                   <svg
                     fill="#25D366"
                     viewBox="0 0 24 24"
@@ -77,7 +77,7 @@ const profile = () => {
                   </svg>
                 </a>
                 {/* Twitter */}
-                <a href="https://twitter.com/intent/tweet" target="_blank">
+                <a href="https://twitter.com/intent/tweet" target="_blank" rel="noreferrer">
                   <svg
                     fill="#1DA1F2"
                     viewBox="0 0 24 24"
@@ -91,6 +91,7 @@ const profile = () => {
                 <a
                   href="https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&display=popup&ref=plugin&src=share_button"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <svg
                     fill="#1877F2"
@@ -129,4 +130,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;

@@ -18,6 +18,7 @@ const CourseCard = (props) => {
         <a
           href={props.coursesLink}
           target="_blank"
+          rel="noreferrer"
             onClick={async (e) => {
             await fetch('/api/addCourseToHistory?email='+props.email+'&provider=udemy&title='+props.Name) 
 

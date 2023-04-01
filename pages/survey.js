@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Pills from "../components/Pills";
 import { MultiStepForm, Step } from "react-multi-form";
-const survey = () => {
+const Survey = () => {
   const api_url = "https://cra-nu.vercel.app";
   const router = useRouter();
   let [ugOptions, setUgOptions] = useState([]);
@@ -405,4 +405,4 @@ const survey = () => {
     </div>
   );
 };
-export default survey;
+export default Survey;

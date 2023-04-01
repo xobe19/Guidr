@@ -21,9 +21,9 @@ const CourseTable = (props) => {
                   </th>
                 </tr>
               </thead>
-              {props.data.map((current) => {
+              {props.data.map((current, indx) => {
                 return (
-                  <tbody className="text-sm divide-y divide-gray-100">
+                  <tbody className="text-sm divide-y divide-gray-100" key={indx}>
                     <tr>
                       <td className="p-2 whitespace-nowrap">
                         <div className="flex items-center">

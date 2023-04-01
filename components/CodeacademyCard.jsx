@@ -23,6 +23,7 @@ const CodeacademyCard = (props) => {
             
             #:~:text=${props.title}`}
             target="_blank"
+            rel="noreferrer"
             onClick={async (e) => {
               await fetch(
                 "/api/addCourseToHistory?email=" +

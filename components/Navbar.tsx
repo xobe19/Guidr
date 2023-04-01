@@ -96,9 +96,9 @@ function Navbar(props: any) {
             </li>
             {session ? (
               <li>
-                <a href="/profile">
+                <Link href="/profile">
                   <img src={session.user?.image!} className="h-6" />
-                </a>
+                </Link>
               </li>
             ) : (
               <></>

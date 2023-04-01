@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import JobCard from "../components/JobCard";
 import Navbar from "../components/Navbar";
 
-const recommendations = () => {
+const Recommendations = () => {
   // console.log(router.query);
   // let { job } = router.query;
   // let arrJobs = job.split(',');
@@ -40,8 +40,8 @@ const recommendations = () => {
           </div>
 
           <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-            {params["job"].split(",").map((ele) => {
-              return <JobCard title={ele} />;
+            {params["job"].split(",").map((ele, index) => {
+              return <JobCard title={ele} key={index}/>;
             })}
           </div>
         </div>
@@ -50,4 +50,4 @@ const recommendations = () => {
   );
 };
 
-export default recommendations;
+export default Recommendations;

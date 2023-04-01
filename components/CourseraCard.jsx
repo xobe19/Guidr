@@ -18,6 +18,7 @@ const CourseraCard = (props) => {
         <a
           href={props.link}
           target="_blank"
+          rel="noreferrer"
           onClick={async (e) => {
             await fetch(
               "/api/addCourseToHistory?email=" +
